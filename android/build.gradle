@@ -2,14 +2,13 @@ group 'com.shekarmudaliyar.social_share'
 version '1.0-SNAPSHOT'
 
 buildscript {
-    ext.kotlin_version = '1.5.30'
+    ext.kotlin_version = '1.8.22'  // Updated
     repositories {
         google()
-        jcenter()
+        mavenCentral()  // Changed from jcenter (deprecated)
     }
-
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.4.2'  // Updated
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -17,7 +16,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()  // Changed from jcenter
     }
 }
 
@@ -26,24 +25,26 @@ apply plugin: 'kotlin-android'
 
 android {
     namespace 'com.shekarmudaliyar.social_share'
-    compileSdkVersion 28
-
+    compileSdkVersion 35  // Changed from 28
+    
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
+    
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+    
     defaultConfig {
-        minSdkVersion 16
+        minSdkVersion 21  // Updated from 16
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    
     lintOptions {
         disable 'InvalidPackage'
     }
